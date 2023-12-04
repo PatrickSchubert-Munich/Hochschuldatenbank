@@ -28,24 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenueScreen));
             btnStudenten = new Button();
             btnDozenten = new Button();
             SuspendLayout();
             // 
             // btnStudenten
             // 
-            btnStudenten.Location = new Point(34, 31);
+            btnStudenten.BackgroundImage = (Image)resources.GetObject("btnStudenten.BackgroundImage");
+            btnStudenten.Font = new Font("Arial", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnStudenten.ForeColor = Color.MediumBlue;
+            btnStudenten.Location = new Point(53, 51);
             btnStudenten.Name = "btnStudenten";
-            btnStudenten.Size = new Size(324, 168);
+            btnStudenten.Size = new Size(401, 225);
             btnStudenten.TabIndex = 0;
             btnStudenten.Text = "Studenten";
             btnStudenten.UseVisualStyleBackColor = true;
             // 
             // btnDozenten
             // 
-            btnDozenten.Location = new Point(396, 31);
+            btnDozenten.BackgroundImage = (Image)resources.GetObject("btnDozenten.BackgroundImage");
+            btnDozenten.Font = new Font("Arial", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDozenten.ForeColor = Color.MediumBlue;
+            btnDozenten.Location = new Point(493, 51);
             btnDozenten.Name = "btnDozenten";
-            btnDozenten.Size = new Size(308, 168);
+            btnDozenten.Size = new Size(400, 227);
             btnDozenten.TabIndex = 1;
             btnDozenten.Text = "Dozenten";
             btnDozenten.UseVisualStyleBackColor = true;
@@ -54,10 +61,12 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(745, 237);
+            BackColor = Color.DarkBlue;
+            ClientSize = new Size(956, 338);
             ControlBox = false;
             Controls.Add(btnDozenten);
             Controls.Add(btnStudenten);
+            ForeColor = SystemColors.ControlText;
             Name = "MainMenueScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Hauptmenü";
