@@ -17,23 +17,25 @@ namespace Hochschuldatenbank
         private void LoadingBarTimer_Tick(object sender, EventArgs e)
         {
             loadingBarValue += 1;
-            LoadingBar.Value = loadingBarValue;
-            LblLoadingValue.Text = String.Format("{0}%", loadingBarValue);
 
-            if (loadingBarValue >= 100)
+            LblLoadingValue.Text = String.Format("{0}%", loadingBarValue);
+            LoadingBar.Value = loadingBarValue;
+
+            if (loadingBarValue >= LoadingBar.Maximum)
             {
                 LoadingBarTimer.Stop();
+                Thread.Sleep(2000);
+
+                // Hide LoadingScreen (this - Object)
+                this.Hide();
+
+                // Loading MainMenueScreen
+                MainMenueScreen mainManueScreen = new MainMenueScreen();
+                mainManueScreen.Show();
             }
-        }
-
-        private void LoadingBar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LblLoadingValue_Click(object sender, EventArgs e)
-        {
             
+            // Finish Loading
+
         }
     }
 }

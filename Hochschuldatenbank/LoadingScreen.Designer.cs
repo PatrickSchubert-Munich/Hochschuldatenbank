@@ -52,11 +52,12 @@
             // LoadingBar
             // 
             LoadingBar.Anchor = AnchorStyles.Bottom;
-            LoadingBar.Location = new Point(26, 666);
+            LoadingBar.Location = new Point(42, 666);
             LoadingBar.Name = "LoadingBar";
-            LoadingBar.Size = new Size(1170, 34);
+            LoadingBar.Size = new Size(1128, 34);
+            LoadingBar.Step = 1;
+            LoadingBar.Style = ProgressBarStyle.Continuous;
             LoadingBar.TabIndex = 1;
-            LoadingBar.Click += LoadingBar_Click;
             // 
             // LblLoadingValue
             // 
@@ -70,7 +71,6 @@
             LblLoadingValue.Size = new Size(41, 28);
             LblLoadingValue.TabIndex = 2;
             LblLoadingValue.Text = "0%";
-            LblLoadingValue.Click += LblLoadingValue_Click;
             // 
             // LoadingBarTimer
             // 
