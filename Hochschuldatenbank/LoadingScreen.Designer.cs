@@ -89,6 +89,7 @@
             Controls.Add(LoadingBar);
             Controls.Add(LblLoading);
             ForeColor = Color.Transparent;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "LoadingScreen";

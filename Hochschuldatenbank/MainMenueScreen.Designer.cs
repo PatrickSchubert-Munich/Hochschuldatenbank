@@ -29,44 +29,57 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenueScreen));
-            btnStudenten = new Button();
-            btnDozenten = new Button();
+            btnStudentenMainMenue = new Button();
+            btnDozentenMainMenue = new Button();
             SuspendLayout();
             // 
-            // btnStudenten
+            // btnStudentenMainMenue
             // 
-            btnStudenten.BackgroundImage = (Image)resources.GetObject("btnStudenten.BackgroundImage");
-            btnStudenten.Font = new Font("Arial", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnStudenten.ForeColor = Color.MediumBlue;
-            btnStudenten.Location = new Point(53, 51);
-            btnStudenten.Name = "btnStudenten";
-            btnStudenten.Size = new Size(401, 225);
-            btnStudenten.TabIndex = 0;
-            btnStudenten.Text = "Studenten";
-            btnStudenten.UseVisualStyleBackColor = true;
+            btnStudentenMainMenue.BackgroundImage = (Image)resources.GetObject("btnStudentenMainMenue.BackgroundImage");
+            btnStudentenMainMenue.FlatAppearance.BorderColor = Color.FromArgb(40, 40, 40);
+            btnStudentenMainMenue.FlatAppearance.BorderSize = 2;
+            btnStudentenMainMenue.FlatAppearance.MouseOverBackColor = Color.White;
+            btnStudentenMainMenue.FlatStyle = FlatStyle.Popup;
+            btnStudentenMainMenue.Font = new Font("Arial", 26F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnStudentenMainMenue.ForeColor = Color.Black;
+            btnStudentenMainMenue.Location = new Point(53, 51);
+            btnStudentenMainMenue.Name = "btnStudentenMainMenue";
+            btnStudentenMainMenue.Size = new Size(401, 225);
+            btnStudentenMainMenue.TabIndex = 0;
+            btnStudentenMainMenue.Text = "Studenten";
+            btnStudentenMainMenue.UseVisualStyleBackColor = true;
+            btnStudentenMainMenue.Click += btnStudenten_Click;
             // 
-            // btnDozenten
+            // btnDozentenMainMenue
             // 
-            btnDozenten.BackgroundImage = (Image)resources.GetObject("btnDozenten.BackgroundImage");
-            btnDozenten.Font = new Font("Arial", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDozenten.ForeColor = Color.MediumBlue;
-            btnDozenten.Location = new Point(493, 51);
-            btnDozenten.Name = "btnDozenten";
-            btnDozenten.Size = new Size(400, 227);
-            btnDozenten.TabIndex = 1;
-            btnDozenten.Text = "Dozenten";
-            btnDozenten.UseVisualStyleBackColor = true;
+            btnDozentenMainMenue.BackgroundImage = (Image)resources.GetObject("btnDozentenMainMenue.BackgroundImage");
+            btnDozentenMainMenue.FlatAppearance.BorderColor = Color.FromArgb(40, 40, 40);
+            btnDozentenMainMenue.FlatAppearance.BorderSize = 2;
+            btnDozentenMainMenue.FlatAppearance.MouseOverBackColor = Color.White;
+            btnDozentenMainMenue.FlatStyle = FlatStyle.Popup;
+            btnDozentenMainMenue.Font = new Font("Arial", 26F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDozentenMainMenue.ForeColor = Color.White;
+            btnDozentenMainMenue.Location = new Point(493, 51);
+            btnDozentenMainMenue.Name = "btnDozentenMainMenue";
+            btnDozentenMainMenue.Size = new Size(400, 227);
+            btnDozentenMainMenue.TabIndex = 1;
+            btnDozentenMainMenue.Text = "Dozenten";
+            btnDozentenMainMenue.UseVisualStyleBackColor = true;
+            btnDozentenMainMenue.Click += btnDozenten_Click;
             // 
             // MainMenueScreen
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DarkBlue;
+            BackColor = Color.FromArgb(40, 40, 40);
             ClientSize = new Size(956, 338);
             ControlBox = false;
-            Controls.Add(btnDozenten);
-            Controls.Add(btnStudenten);
+            Controls.Add(btnDozentenMainMenue);
+            Controls.Add(btnStudentenMainMenue);
             ForeColor = SystemColors.ControlText;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "MainMenueScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Hauptmenü";
@@ -76,7 +89,7 @@
 
         #endregion
 
-        private Button btnStudenten;
-        private Button btnDozenten;
+        private Button btnStudentenMainMenue;
+        private Button btnDozentenMainMenue;
     }
 }

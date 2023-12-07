@@ -21,5 +21,19 @@ namespace Hochschuldatenbank
         {
 
         }
+
+        private void btnStudenten_Click(object sender, EventArgs e)
+        {
+            StudentenScreen studentenScreen = new StudentenScreen();
+            studentenScreen.Show();
+            this.Hide();
+        }
+
+        private void btnDozenten_Click(object sender, EventArgs e)
+        {
+            DozentenScreen dozentenScreen = new DozentenScreen();
+            dozentenScreen.Show();
+            this.Hide();
+        }
     }
 }
