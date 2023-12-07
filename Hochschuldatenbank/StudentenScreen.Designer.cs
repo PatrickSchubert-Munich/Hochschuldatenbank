@@ -48,6 +48,7 @@
             btnStudentFelderLeeren = new Button();
             GridViewStudent = new DataGridView();
             btnBackToMainMenue = new Button();
+            dtPickerStudent = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)GridViewStudent).BeginInit();
             SuspendLayout();
             // 
@@ -65,6 +66,7 @@
             btnStudentSpeichern.TabIndex = 0;
             btnStudentSpeichern.Text = "Speichern";
             btnStudentSpeichern.UseVisualStyleBackColor = false;
+            btnStudentSpeichern.Click += btnStudentSpeichern_Click;
             // 
             // btnStudentLoeschen
             // 
@@ -81,6 +83,7 @@
             btnStudentLoeschen.Text = "Löschen";
             btnStudentLoeschen.TextImageRelation = TextImageRelation.ImageAboveText;
             btnStudentLoeschen.UseVisualStyleBackColor = false;
+            btnStudentLoeschen.Click += btnStudentLoeschen_Click;
             // 
             // btnStudentBearbeiten
             // 
@@ -96,6 +99,7 @@
             btnStudentBearbeiten.TabIndex = 2;
             btnStudentBearbeiten.Text = "Bearbeiten";
             btnStudentBearbeiten.UseVisualStyleBackColor = false;
+            btnStudentBearbeiten.Click += btnStudentBearbeiten_Click;
             // 
             // txtBoxStudentVorname
             // 
@@ -158,6 +162,7 @@
             // 
             radioBtnStudentMaennlich.AutoSize = true;
             radioBtnStudentMaennlich.BackColor = Color.Transparent;
+            radioBtnStudentMaennlich.Checked = true;
             radioBtnStudentMaennlich.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             radioBtnStudentMaennlich.ForeColor = Color.White;
             radioBtnStudentMaennlich.Location = new Point(206, 179);
@@ -178,7 +183,6 @@
             radioBtnStudentWeiblich.Name = "radioBtnStudentWeiblich";
             radioBtnStudentWeiblich.Size = new Size(121, 34);
             radioBtnStudentWeiblich.TabIndex = 9;
-            radioBtnStudentWeiblich.TabStop = true;
             radioBtnStudentWeiblich.Text = "weiblich";
             radioBtnStudentWeiblich.UseVisualStyleBackColor = false;
             // 
@@ -232,12 +236,13 @@
             // 
             comboBoxStudentStudienfach.BackColor = Color.FromArgb(30, 30, 30);
             comboBoxStudentStudienfach.FlatStyle = FlatStyle.Flat;
+            comboBoxStudentStudienfach.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxStudentStudienfach.ForeColor = Color.White;
             comboBoxStudentStudienfach.FormattingEnabled = true;
-            comboBoxStudentStudienfach.Items.AddRange(new object[] { "Informatik", "Wirtschaftsinformatik", "Softwareentwicklung", "Mathematik", "Maschinenbau", "Elektrotechnik", "Mechatronik", "Fahrzeugtechnik", "Systems Engineering", "Betriebswirtschaft", "Philosiphie" });
-            comboBoxStudentStudienfach.Location = new Point(206, 333);
+            comboBoxStudentStudienfach.Items.AddRange(new object[] { "Informatik", "Wirtschaftsinformatik", "Softwareentwicklung", "Bio-Informatik", "Medieninformatik", "Mathematik", "Maschinenbau", "Elektrotechnik", "Mechatronik", "Fahrzeugtechnik", "Elektromobilität", "Flugzeugtechnik", "Raumfahrt", "Systems Engineering", "Betriebswirtschaft", "Philosiphie", "Tourismus", "Biologie", "Physik", "Sportwissenschaften", "Wirtschaftswissenschaften" });
+            comboBoxStudentStudienfach.Location = new Point(206, 328);
             comboBoxStudentStudienfach.Name = "comboBoxStudentStudienfach";
-            comboBoxStudentStudienfach.Size = new Size(256, 33);
+            comboBoxStudentStudienfach.Size = new Size(256, 38);
             comboBoxStudentStudienfach.TabIndex = 14;
             // 
             // btnStudentFelderLeeren
@@ -255,6 +260,7 @@
             btnStudentFelderLeeren.Text = "Felder leeren";
             btnStudentFelderLeeren.TextImageRelation = TextImageRelation.ImageAboveText;
             btnStudentFelderLeeren.UseVisualStyleBackColor = false;
+            btnStudentFelderLeeren.Click += btnStudentFelderLeeren_Click;
             // 
             // GridViewStudent
             // 
@@ -274,16 +280,20 @@
             GridViewStudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             GridViewStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GridViewStudent.Location = new Point(30, 480);
+            GridViewStudent.MultiSelect = false;
             GridViewStudent.Name = "GridViewStudent";
+            GridViewStudent.ReadOnly = true;
             GridViewStudent.RowHeadersVisible = false;
             GridViewStudent.RowHeadersWidth = 62;
             GridViewStudent.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             GridViewStudent.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(60, 60, 60);
             GridViewStudent.RowTemplate.DefaultCellStyle.ForeColor = Color.White;
-            GridViewStudent.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.Silver;
+            GridViewStudent.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.DimGray;
             GridViewStudent.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            GridViewStudent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             GridViewStudent.Size = new Size(1129, 382);
             GridViewStudent.TabIndex = 16;
+            GridViewStudent.CellContentClick += GridViewStudent_CellContentClick;
             // 
             // btnBackToMainMenue
             // 
@@ -301,6 +311,20 @@
             btnBackToMainMenue.UseVisualStyleBackColor = false;
             btnBackToMainMenue.Click += btnBackToMainMenue_Click;
             // 
+            // dtPickerStudent
+            // 
+            dtPickerStudent.CalendarForeColor = Color.White;
+            dtPickerStudent.CalendarMonthBackground = Color.FromArgb(40, 40, 40);
+            dtPickerStudent.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtPickerStudent.Format = DateTimePickerFormat.Short;
+            dtPickerStudent.Location = new Point(206, 219);
+            dtPickerStudent.MaxDate = new DateTime(2100, 12, 31, 0, 0, 0, 0);
+            dtPickerStudent.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            dtPickerStudent.Name = "dtPickerStudent";
+            dtPickerStudent.Size = new Size(256, 37);
+            dtPickerStudent.TabIndex = 23;
+            dtPickerStudent.Value = new DateTime(2023, 12, 7, 17, 19, 58, 0);
+            // 
             // StudentenScreen
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -309,6 +333,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1194, 892);
             ControlBox = false;
+            Controls.Add(dtPickerStudent);
             Controls.Add(btnBackToMainMenue);
             Controls.Add(GridViewStudent);
             Controls.Add(btnStudentFelderLeeren);
@@ -333,6 +358,7 @@
             Name = "StudentenScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Studentendatenbank";
+            Load += StudentenScreen_Load;
             ((System.ComponentModel.ISupportInitialize)GridViewStudent).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -358,5 +384,6 @@
         private Button btnStudentFelderLeeren;
         private DataGridView GridViewStudent;
         private Button btnBackToMainMenue;
+        private DateTimePicker dtPickerStudent;
     }
 }

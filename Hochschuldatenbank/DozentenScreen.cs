@@ -15,13 +15,86 @@ namespace Hochschuldatenbank
     {
 
         private SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Patri\OneDrive\Dokumente\Personendatenbank.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True");
+        string dozentGeschlecht = "";
+        int lastSelectedPersNr = 0;
 
         public DozentenScreen()
         {
             InitializeComponent();
+            ShowDozenten();
+        }
+
+        private void btnBackToMainMenue_Click(object sender, EventArgs e)
+        {
+            MainMenueScreen mainMenueScreen = new MainMenueScreen();
+            mainMenueScreen.Show();
+            this.Hide();
+        }
+
+        private void btnDozentFelderLeeren_Click(object sender, EventArgs e)
+        {
+            ClearAllFieldsDozenten();
+        }
+
+        private void btnDozentSpeichern_Click(object sender, EventArgs e)
+        {
+            if (txtBoxDozentVorname.Text == String.Empty ||
+                txtBoxDozentNachname.Text == String.Empty ||
+                txtBoxDozentAdresse.Text == String.Empty ||
+                comboBoxDozentFakultaet.Text == String.Empty)
+            {
+                MessageBox.Show("Bitte Fülle weitere Felder aus. Bis auf den Abschluss und das Dienstzimmer " +
+                    "sind alle anderen Felder sog. Pflichtfelder.");
+                return;
+            }
+
+            string dozentVorname = txtBoxDozentVorname.Text;
+            string dozentNachname = txtBoxDozentNachname.Text;
+            string dozentAdresse = txtBoxDozentAdresse.Text;
+            string dozentDienstzimmer = txtBoxDozentDienstzimmer.Text;
+            string dozentAbschluss = comboBoxDozentAbschluss.Text;
+            string dozentFakultaet = comboBoxDozentFakultaet.Text;
+            var dozentGebDatum = dtPickerDozent.Value.Date.ToShortDateString();
+
+            if (radioBtnDozentMaennlich.Checked == true)
+            {
+                dozentGeschlecht = "m";
+            }
+            else if (radioBtnDozentWeiblich.Checked == true)
+            {
+                dozentGeschlecht = "w";
+            }
+
+            connection.Open();
+            string query = String.Format("INSERT INTO Dozenten VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
+                                            dozentVorname, dozentNachname, dozentGeschlecht, dozentGebDatum,
+                                            dozentAdresse, dozentAbschluss, dozentFakultaet, dozentDienstzimmer);
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+
+            ClearAllFieldsDozenten();
+            ShowDozenten();
+        }
+
+        private void ClearAllFieldsDozenten()
+        {
+            txtBoxDozentVorname.Text = String.Empty;
+            txtBoxDozentNachname.Text = String.Empty;
+            txtBoxDozentAdresse.Text = String.Empty;
+            txtBoxDozentDienstzimmer.Text = String.Empty;
+            comboBoxDozentAbschluss.Text = String.Empty;
+            comboBoxDozentFakultaet.Text = String.Empty;
+            radioBtnDozentMaennlich.Checked = true;
+            radioBtnDozentWeiblich.Checked = false;
+            dtPickerDozent.Value = DateTime.Today;
+        }
+
+        private void ShowDozenten()
+        {
             connection.Open();
 
-            string query = "select * from Dozenten";
+            string query = "SELECT * FROM Dozenten;";
             SqlDataAdapter sqlAdapter = new SqlDataAdapter(query, connection);
 
             DataSet dataset = new DataSet();
@@ -33,16 +106,87 @@ namespace Hochschuldatenbank
             connection.Close();
         }
 
-        private void btnBackToMainMenue_Click(object sender, EventArgs e)
-        {
-            MainMenueScreen mainMenueScreen = new MainMenueScreen();
-            mainMenueScreen.Show();
-            this.Hide();
-        }
-
         private void GridViewDozent_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            lastSelectedPersNr = (int)GridViewDozent.SelectedRows[0].Cells[0].Value;
+            txtBoxDozentVorname.Text = GridViewDozent.SelectedRows[0].Cells[1].Value.ToString();
+            txtBoxDozentNachname.Text = GridViewDozent.SelectedRows[0].Cells[2].Value.ToString();
 
+            if (GridViewDozent.SelectedRows[0].Cells[3].Value.ToString() == "m")
+            {
+                radioBtnDozentMaennlich.Checked = true;
+            }
+            else radioBtnDozentWeiblich.Checked = true;
+
+            dtPickerDozent.Value = DateTime.Parse(GridViewDozent.SelectedRows[0].Cells[4].Value.ToString()!);
+            txtBoxDozentAdresse.Text = GridViewDozent.SelectedRows[0].Cells[5].Value.ToString();
+            comboBoxDozentAbschluss.Text = GridViewDozent.SelectedRows[0].Cells[6].Value.ToString();
+            comboBoxDozentFakultaet.Text = GridViewDozent.SelectedRows[0].Cells[7].Value.ToString();
+            txtBoxDozentDienstzimmer.Text = GridViewDozent.SelectedRows[0].Cells[8].Value.ToString();
+        }
+
+        private void btnDozentLoeschen_Click(object sender, EventArgs e)
+        {
+            if (lastSelectedPersNr != 0)
+            {
+                string query = String.Format("DELETE FROM Dozenten WHERE Personalnummer = {0};", lastSelectedPersNr);
+                ExecuteQuery(query);
+            }
+            else
+            {
+                MessageBox.Show("Bitte zuerst einen Dozenten in der Datenbank auswählen.");
+                return;
+            }
+
+            ClearAllFieldsDozenten();
+            ShowDozenten();
+        }
+
+        private void ExecuteQuery(string query)
+        {
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        private void btnDozentBearbeiten_Click(object sender, EventArgs e)
+        {
+            if (lastSelectedPersNr != 0)
+            {
+                string dozentVorname = txtBoxDozentVorname.Text;
+                string dozentNachname = txtBoxDozentNachname.Text;
+                string dozentAdresse = txtBoxDozentAdresse.Text;
+                string dozentDienstzimmer = txtBoxDozentDienstzimmer.Text;
+                string dozentAbschluss = comboBoxDozentAbschluss.Text;
+                string dozentFakultaet = comboBoxDozentFakultaet.Text;
+                var dozentGebDatum = dtPickerDozent.Value.Date.ToShortDateString();
+
+                if (radioBtnDozentMaennlich.Checked == true)
+                {
+                    dozentGeschlecht = "m";
+                }
+                else if (radioBtnDozentWeiblich.Checked == true)
+                {
+                    dozentGeschlecht = "w";
+                }
+
+                string query = String.Format("UPDATE Dozenten SET Vorname='{0}'," +
+                                             "Nachname='{1}', Geschlecht='{2}', Geburtsdatum='{3}'," +
+                                             "Adresse='{4}', Abschluss='{5}', Fakultät='{6}'," +
+                                             "Dienstzimmer='{7}' WHERE Personalnummer={8};", dozentVorname, 
+                                             dozentNachname, dozentGeschlecht, dozentGebDatum, dozentAdresse,
+                                             dozentAbschluss, dozentFakultaet, dozentDienstzimmer, lastSelectedPersNr);
+                ExecuteQuery(query);
+            }
+            else
+            {
+                MessageBox.Show("Bitte wähle zuerst einen Dozenten in der Datenbank aus.");
+                return;
+            }
+
+            ClearAllFieldsDozenten();
+            ShowDozenten();
         }
     }
 }

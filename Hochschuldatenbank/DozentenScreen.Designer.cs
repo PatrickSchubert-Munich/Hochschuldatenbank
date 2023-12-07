@@ -54,6 +54,7 @@ namespace Hochschuldatenbank
             lblDozentDienstzimmer = new Label();
             txtBoxDozentDienstzimmer = new TextBox();
             btnBackToMainMenue = new Button();
+            dtPickerDozent = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)GridViewDozent).BeginInit();
             SuspendLayout();
             // 
@@ -71,6 +72,7 @@ namespace Hochschuldatenbank
             btnDozentSpeichern.TabIndex = 0;
             btnDozentSpeichern.Text = "Speichern";
             btnDozentSpeichern.UseVisualStyleBackColor = false;
+            btnDozentSpeichern.Click += btnDozentSpeichern_Click;
             // 
             // btnDozentLoeschen
             // 
@@ -87,6 +89,7 @@ namespace Hochschuldatenbank
             btnDozentLoeschen.Text = "Löschen";
             btnDozentLoeschen.TextImageRelation = TextImageRelation.ImageAboveText;
             btnDozentLoeschen.UseVisualStyleBackColor = false;
+            btnDozentLoeschen.Click += btnDozentLoeschen_Click;
             // 
             // btnDozentBearbeiten
             // 
@@ -102,6 +105,7 @@ namespace Hochschuldatenbank
             btnDozentBearbeiten.TabIndex = 2;
             btnDozentBearbeiten.Text = "Bearbeiten";
             btnDozentBearbeiten.UseVisualStyleBackColor = false;
+            btnDozentBearbeiten.Click += btnDozentBearbeiten_Click;
             // 
             // txtBoxDozentVorname
             // 
@@ -163,6 +167,7 @@ namespace Hochschuldatenbank
             // 
             radioBtnDozentMaennlich.AutoSize = true;
             radioBtnDozentMaennlich.BackColor = Color.Transparent;
+            radioBtnDozentMaennlich.Checked = true;
             radioBtnDozentMaennlich.FlatAppearance.BorderColor = Color.DimGray;
             radioBtnDozentMaennlich.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             radioBtnDozentMaennlich.ForeColor = Color.White;
@@ -184,7 +189,6 @@ namespace Hochschuldatenbank
             radioBtnDozentWeiblich.Name = "radioBtnDozentWeiblich";
             radioBtnDozentWeiblich.Size = new Size(121, 34);
             radioBtnDozentWeiblich.TabIndex = 9;
-            radioBtnDozentWeiblich.TabStop = true;
             radioBtnDozentWeiblich.Text = "weiblich";
             radioBtnDozentWeiblich.UseVisualStyleBackColor = false;
             // 
@@ -238,12 +242,13 @@ namespace Hochschuldatenbank
             // 
             comboBoxDozentAbschluss.BackColor = Color.FromArgb(30, 30, 30);
             comboBoxDozentAbschluss.FlatStyle = FlatStyle.Flat;
+            comboBoxDozentAbschluss.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxDozentAbschluss.ForeColor = Color.White;
             comboBoxDozentAbschluss.FormattingEnabled = true;
-            comboBoxDozentAbschluss.Items.AddRange(new object[] { "Informatik", "Wirtschaftsinformatik", "Softwareentwicklung", "Bio-Informatik", "Medieninformatik", "Mathematik", "Maschinenbau", "Elektrotechnik", "Mechatronik", "Fahrzeugtechnik", "Elektromobilität", "Flugzeugtechnik", "Raumfahrt", "Systems Engineering", "Betriebswirtschaft", "Philosiphie", "Tourismus", "Biologie", "Physik", "Sportwissenschaften", "Wirtschaftswissenschaften" });
-            comboBoxDozentAbschluss.Location = new Point(192, 333);
+            comboBoxDozentAbschluss.Items.AddRange(new object[] { "Dr.", "Dr. Dr.", "Dr. Prof.", "Dr. Dr. Prof.", "Dr. Prof. Hab.", "Dr. Dr. Prof. Hab." });
+            comboBoxDozentAbschluss.Location = new Point(192, 328);
             comboBoxDozentAbschluss.Name = "comboBoxDozentAbschluss";
-            comboBoxDozentAbschluss.Size = new Size(256, 33);
+            comboBoxDozentAbschluss.Size = new Size(256, 38);
             comboBoxDozentAbschluss.TabIndex = 14;
             // 
             // btnDozentFelderLeeren
@@ -261,6 +266,7 @@ namespace Hochschuldatenbank
             btnDozentFelderLeeren.Text = "Felder leeren";
             btnDozentFelderLeeren.TextImageRelation = TextImageRelation.ImageAboveText;
             btnDozentFelderLeeren.UseVisualStyleBackColor = false;
+            btnDozentFelderLeeren.Click += btnDozentFelderLeeren_Click;
             // 
             // GridViewDozent
             // 
@@ -270,6 +276,7 @@ namespace Hochschuldatenbank
             GridViewDozent.AllowUserToResizeRows = false;
             GridViewDozent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GridViewDozent.BackgroundColor = Color.FromArgb(30, 30, 30);
+            GridViewDozent.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
@@ -279,15 +286,20 @@ namespace Hochschuldatenbank
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             GridViewDozent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             GridViewDozent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridViewDozent.GridColor = Color.White;
             GridViewDozent.Location = new Point(30, 480);
+            GridViewDozent.MultiSelect = false;
             GridViewDozent.Name = "GridViewDozent";
+            GridViewDozent.ReadOnly = true;
+            GridViewDozent.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             GridViewDozent.RowHeadersVisible = false;
             GridViewDozent.RowHeadersWidth = 62;
             GridViewDozent.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             GridViewDozent.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(60, 60, 60);
             GridViewDozent.RowTemplate.DefaultCellStyle.ForeColor = Color.White;
-            GridViewDozent.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.Silver;
+            GridViewDozent.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.DimGray;
             GridViewDozent.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            GridViewDozent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             GridViewDozent.Size = new Size(1209, 382);
             GridViewDozent.TabIndex = 16;
             GridViewDozent.CellContentClick += GridViewDozent_CellContentClick;
@@ -308,12 +320,13 @@ namespace Hochschuldatenbank
             // 
             comboBoxDozentFakultaet.BackColor = Color.FromArgb(30, 30, 30);
             comboBoxDozentFakultaet.FlatStyle = FlatStyle.Flat;
+            comboBoxDozentFakultaet.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxDozentFakultaet.ForeColor = Color.White;
             comboBoxDozentFakultaet.FormattingEnabled = true;
             comboBoxDozentFakultaet.Items.AddRange(new object[] { "FK01", "FK02", "FK03", "FK04", "FK05", "FK06", "FK07", "FK08", "FK09", "FK10", "FK11", "FK12" });
-            comboBoxDozentFakultaet.Location = new Point(701, 71);
+            comboBoxDozentFakultaet.Location = new Point(701, 66);
             comboBoxDozentFakultaet.Name = "comboBoxDozentFakultaet";
-            comboBoxDozentFakultaet.Size = new Size(256, 33);
+            comboBoxDozentFakultaet.Size = new Size(256, 38);
             comboBoxDozentFakultaet.TabIndex = 18;
             // 
             // lblDozentDienstzimmer
@@ -354,6 +367,20 @@ namespace Hochschuldatenbank
             btnBackToMainMenue.UseVisualStyleBackColor = false;
             btnBackToMainMenue.Click += btnBackToMainMenue_Click;
             // 
+            // dtPickerDozent
+            // 
+            dtPickerDozent.CalendarForeColor = Color.White;
+            dtPickerDozent.CalendarMonthBackground = Color.FromArgb(40, 40, 40);
+            dtPickerDozent.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtPickerDozent.Format = DateTimePickerFormat.Short;
+            dtPickerDozent.Location = new Point(192, 219);
+            dtPickerDozent.MaxDate = new DateTime(2100, 12, 31, 0, 0, 0, 0);
+            dtPickerDozent.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            dtPickerDozent.Name = "dtPickerDozent";
+            dtPickerDozent.Size = new Size(256, 37);
+            dtPickerDozent.TabIndex = 24;
+            dtPickerDozent.Value = new DateTime(2023, 12, 7, 17, 19, 58, 0);
+            // 
             // DozentenScreen
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -363,6 +390,7 @@ namespace Hochschuldatenbank
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1274, 892);
             ControlBox = false;
+            Controls.Add(dtPickerDozent);
             Controls.Add(btnBackToMainMenue);
             Controls.Add(txtBoxDozentDienstzimmer);
             Controls.Add(lblDozentDienstzimmer);
@@ -390,7 +418,7 @@ namespace Hochschuldatenbank
             MinimizeBox = false;
             Name = "DozentenScreen";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Studentendatenbank";
+            Text = "Dozentendatenbank";
             ((System.ComponentModel.ISupportInitialize)GridViewDozent).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -420,5 +448,6 @@ namespace Hochschuldatenbank
         private Label lblDozentDienstzimmer;
         private TextBox txtBoxDozentDienstzimmer;
         private Button btnBackToMainMenue;
+        private DateTimePicker dtPickerDozent;
     }
 }
