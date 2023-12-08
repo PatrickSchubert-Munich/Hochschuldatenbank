@@ -17,11 +17,6 @@ namespace Hochschuldatenbank
             InitializeComponent();
         }
 
-        private void MainMenueScreen_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnStudenten_Click(object sender, EventArgs e)
         {
             StudentenScreen studentenScreen = new StudentenScreen();
@@ -33,6 +28,13 @@ namespace Hochschuldatenbank
         {
             DozentenScreen dozentenScreen = new DozentenScreen();
             dozentenScreen.Show();
+            this.Hide();
+        }
+
+        private void btnKurseMainMenue_Click(object sender, EventArgs e)
+        {
+            KurseScreen kurseScreen = new KurseScreen();
+            kurseScreen.Show();
             this.Hide();
         }
     }

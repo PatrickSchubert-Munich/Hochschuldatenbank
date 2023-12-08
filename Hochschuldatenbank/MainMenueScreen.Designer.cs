@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenueScreen));
             btnStudentenMainMenue = new Button();
             btnDozentenMainMenue = new Button();
+            btnKurseMainMenue = new Button();
             SuspendLayout();
             // 
             // btnStudentenMainMenue
@@ -67,13 +68,31 @@
             btnDozentenMainMenue.UseVisualStyleBackColor = true;
             btnDozentenMainMenue.Click += btnDozenten_Click;
             // 
+            // btnKurseMainMenue
+            // 
+            btnKurseMainMenue.BackgroundImage = (Image)resources.GetObject("btnKurseMainMenue.BackgroundImage");
+            btnKurseMainMenue.FlatAppearance.BorderColor = Color.FromArgb(40, 40, 40);
+            btnKurseMainMenue.FlatAppearance.BorderSize = 2;
+            btnKurseMainMenue.FlatAppearance.MouseOverBackColor = Color.White;
+            btnKurseMainMenue.FlatStyle = FlatStyle.Popup;
+            btnKurseMainMenue.Font = new Font("Arial", 26F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnKurseMainMenue.ForeColor = Color.Black;
+            btnKurseMainMenue.Location = new Point(933, 51);
+            btnKurseMainMenue.Name = "btnKurseMainMenue";
+            btnKurseMainMenue.Size = new Size(400, 227);
+            btnKurseMainMenue.TabIndex = 2;
+            btnKurseMainMenue.Text = "Kurse";
+            btnKurseMainMenue.UseVisualStyleBackColor = true;
+            btnKurseMainMenue.Click += btnKurseMainMenue_Click;
+            // 
             // MainMenueScreen
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(40, 40, 40);
-            ClientSize = new Size(956, 338);
+            ClientSize = new Size(1393, 328);
             ControlBox = false;
+            Controls.Add(btnKurseMainMenue);
             Controls.Add(btnDozentenMainMenue);
             Controls.Add(btnStudentenMainMenue);
             ForeColor = SystemColors.ControlText;
@@ -83,7 +102,6 @@
             Name = "MainMenueScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Hauptmenü";
-            Load += MainMenueScreen_Load;
             ResumeLayout(false);
         }
 
@@ -91,5 +109,6 @@
 
         private Button btnStudentenMainMenue;
         private Button btnDozentenMainMenue;
+        private Button btnKurseMainMenue;
     }
 }
