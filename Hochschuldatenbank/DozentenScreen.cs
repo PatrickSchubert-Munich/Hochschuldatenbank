@@ -165,6 +165,7 @@ namespace Hochschuldatenbank
                                              "Dienstzimmer='{7}' WHERE Personalnummer={8};", dozentVorname, 
                                              dozentNachname, dozentGeschlecht, dozentGebDatum, dozentAdresse,
                                              dozentAbschluss, dozentFakultaet, dozentDienstzimmer, lastSelectedPersNr);
+                
                 DataBase.DataBaseExecuteQuery(query, connection);
             }
             else
