@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -18,20 +19,39 @@ namespace Hochschuldatenbank
 
         public DataSet DataBaseShowData(string query, SqlConnection connection)
         {
-            connection.Open();
-            SqlDataAdapter sqlAdapter = new SqlDataAdapter(query, connection);
-            DataSet dataset = new DataSet();
-            sqlAdapter.Fill(dataset);
-            connection.Close();
-            return dataset;
+            // try-catch neccessary, if there get something wrong with connection
+            try
+            {
+                SqlDataAdapter sqlAdapter = new SqlDataAdapter(query, connection);
+                // open and close DB-Connection automatically
+                using (sqlAdapter)
+                {
+                    DataSet dataset = new DataSet();
+                    sqlAdapter.Fill(dataset);
+                    return dataset;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                return null!;
+            }
         }
 
         public void DataBaseExecuteQuery(string query, SqlConnection connection)
         {
-            connection.Open();
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
-            connection.Close();
+            // try-catch neccessary, if there get something wrong with connection
+            try
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
     }
 }
