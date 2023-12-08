@@ -14,16 +14,17 @@ namespace Hochschuldatenbank
 {
     public partial class StudentenScreen : Form
     {
-        public SqlConnection connection { get; private set; }
+        private DB DataBase { get; }
+        private SqlConnection connection { get; }
         string studentGeschlecht = "";
         int lastSelectedMatrNr = 0;
 
         public StudentenScreen()
         {
+            DataBase = new DB();
+            connection = DataBase.DataBaseConnection();
             InitializeComponent();
             ShowStudierende();
-            DB DataBase = new DB();
-            connection = DataBase.SqlConnection();
         }
 
         private void btnBackToMainMenue_Click(object sender, EventArgs e)
@@ -61,18 +62,10 @@ namespace Hochschuldatenbank
 
         private void ShowStudierende()
         {
-            connection.Open();
-
             string query = "SELECT * FROM Studierende;";
-            SqlDataAdapter sqlAdapter = new SqlDataAdapter(query, connection);
-
-            DataSet dataset = new DataSet();
-            sqlAdapter.Fill(dataset);
-
+            var dataset = DataBase.DataBaseShowData(query, connection);
             GridViewStudent.DataSource = dataset.Tables[0];
             GridViewStudent.Columns[0].Visible = false;
-
-            connection.Close();
         }
 
         private void btnStudentSpeichern_Click(object sender, EventArgs e)

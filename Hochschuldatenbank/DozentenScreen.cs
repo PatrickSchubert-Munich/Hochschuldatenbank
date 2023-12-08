@@ -13,17 +13,18 @@ namespace Hochschuldatenbank
 {
     public partial class DozentenScreen : Form
     {
-        public SqlConnection connection { get; private set; }
+        private DB DataBase { get; }
+        private SqlConnection connection { get; }
         string dozentGeschlecht = "";
         int lastSelectedPersNr = 0;
         
 
         public DozentenScreen()
         {
+            DataBase = new DB();
+            connection = DataBase.DataBaseConnection();
             InitializeComponent();
             ShowDozenten();
-            DB DataBase = new DB();
-            connection = DataBase.SqlConnection();
         }
 
         private void btnBackToMainMenue_Click(object sender, EventArgs e)
@@ -94,18 +95,10 @@ namespace Hochschuldatenbank
 
         private void ShowDozenten()
         {
-            connection.Open();
-
-            string query = "SELECT * FROM Dozenten;";
-            SqlDataAdapter sqlAdapter = new SqlDataAdapter(query, connection);
-
-            DataSet dataset = new DataSet();
-            sqlAdapter.Fill(dataset);
-
+            string query = "SELECT * FROM Studierende;";
+            var dataset = DataBase.DataBaseShowData(query, connection);
             GridViewDozent.DataSource = dataset.Tables[0];
             GridViewDozent.Columns[0].Visible = false;
-
-            connection.Close();
         }
 
         private void GridViewDozent_CellContentClick(object sender, DataGridViewCellEventArgs e)
