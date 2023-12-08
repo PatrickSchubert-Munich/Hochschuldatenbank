@@ -16,11 +16,6 @@ namespace Hochschuldatenbank
             return connection;
         }
 
-        public SqlDataAdapter DataBaseAdapter()
-        {
-            return new SqlDataAdapter();
-        }
-
         public DataSet DataBaseShowData(string query, SqlConnection connection)
         {
             connection.Open();
@@ -29,6 +24,14 @@ namespace Hochschuldatenbank
             sqlAdapter.Fill(dataset);
             connection.Close();
             return dataset;
+        }
+
+        public void DataBaseExecuteQuery(string query, SqlConnection connection)
+        {
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
         }
     }
 }

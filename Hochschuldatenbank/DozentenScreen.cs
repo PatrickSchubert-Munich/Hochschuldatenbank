@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -95,7 +96,7 @@ namespace Hochschuldatenbank
 
         private void ShowDozenten()
         {
-            string query = "SELECT * FROM Studierende;";
+            string query = "SELECT * FROM Dozenten;";
             var dataset = DataBase.DataBaseShowData(query, connection);
             GridViewDozent.DataSource = dataset.Tables[0];
             GridViewDozent.Columns[0].Visible = false;
@@ -125,7 +126,7 @@ namespace Hochschuldatenbank
             if (lastSelectedPersNr != 0)
             {
                 string query = String.Format("DELETE FROM Dozenten WHERE Personalnummer = {0};", lastSelectedPersNr);
-                ExecuteQuery(query);
+                DataBase.DataBaseExecuteQuery(query, connection);
             }
             else
             {
@@ -135,14 +136,6 @@ namespace Hochschuldatenbank
 
             ClearAllFieldsDozenten();
             ShowDozenten();
-        }
-
-        private void ExecuteQuery(string query)
-        {
-            connection.Open();
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
-            connection.Close();
         }
 
         private void btnDozentBearbeiten_Click(object sender, EventArgs e)
@@ -172,7 +165,7 @@ namespace Hochschuldatenbank
                                              "Dienstzimmer='{7}' WHERE Personalnummer={8};", dozentVorname, 
                                              dozentNachname, dozentGeschlecht, dozentGebDatum, dozentAdresse,
                                              dozentAbschluss, dozentFakultaet, dozentDienstzimmer, lastSelectedPersNr);
-                ExecuteQuery(query);
+                DataBase.DataBaseExecuteQuery(query, connection);
             }
             else
             {

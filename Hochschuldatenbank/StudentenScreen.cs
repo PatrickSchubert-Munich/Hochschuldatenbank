@@ -34,16 +34,6 @@ namespace Hochschuldatenbank
             this.Hide();
         }
 
-        private void txtBoxStudentVorname_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StudentenScreen_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnStudentFelderLeeren_Click(object sender, EventArgs e)
         {
             ClearAllFieldsStudierende();
@@ -97,8 +87,8 @@ namespace Hochschuldatenbank
             string query = String.Format("INSERT INTO Studierende VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');",
                                             studentVorname, studentNachname, studentGeschlecht, studentGebDatum,
                                             studentAdresse, studentStudienfach);
-            ExecuteQuery(query);
-
+            
+            DataBase.DataBaseExecuteQuery(query, connection);
             ClearAllFieldsStudierende();
             ShowStudierende();
         }
@@ -125,7 +115,7 @@ namespace Hochschuldatenbank
             if (lastSelectedMatrNr != 0)
             {
                 string query = String.Format("DELETE FROM Studierende WHERE Matrikelnummer = {0};", lastSelectedMatrNr);
-                ExecuteQuery(query);
+                DataBase.DataBaseExecuteQuery(query, connection);
             }
             else
             {
@@ -135,14 +125,6 @@ namespace Hochschuldatenbank
 
             ClearAllFieldsStudierende();
             ShowStudierende();
-        }
-
-        private void ExecuteQuery(string query)
-        {
-            connection.Open();
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
-            connection.Close();
         }
 
         private void btnStudentBearbeiten_Click(object sender, EventArgs e)
@@ -169,7 +151,8 @@ namespace Hochschuldatenbank
                                              "Adresse='{4}', Studienfach='{5}';", studentVorname,
                                              studentNachname, studentGeschlecht, studentGebDatum, studentAdresse,
                                              studentAdresse, studentStudienfach, lastSelectedMatrNr);
-                ExecuteQuery(query);
+                
+                DataBase.DataBaseExecuteQuery(query, connection);
             }
             else
             {

@@ -110,7 +110,6 @@
             txtBoxStudentVorname.Name = "txtBoxStudentVorname";
             txtBoxStudentVorname.Size = new Size(256, 37);
             txtBoxStudentVorname.TabIndex = 3;
-            txtBoxStudentVorname.TextChanged += txtBoxStudentVorname_TextChanged;
             // 
             // lblStudentVorname
             // 
@@ -358,7 +357,6 @@
             Name = "StudentenScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Studentendatenbank";
-            Load += StudentenScreen_Load;
             ((System.ComponentModel.ISupportInitialize)GridViewStudent).EndInit();
             ResumeLayout(false);
             PerformLayout();
