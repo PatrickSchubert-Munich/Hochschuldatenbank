@@ -46,11 +46,14 @@ namespace Hochschuldatenbank
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                connection.Close();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }
