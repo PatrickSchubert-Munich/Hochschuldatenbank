@@ -14,7 +14,7 @@ namespace Hochschuldatenbank
 {
     public partial class StudentenScreen : Form
     {
-        private SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Patri\OneDrive\Dokumente\Personendatenbank.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True");
+        public SqlConnection connection { get; private set; }
         string studentGeschlecht = "";
         int lastSelectedMatrNr = 0;
 
@@ -22,7 +22,8 @@ namespace Hochschuldatenbank
         {
             InitializeComponent();
             ShowStudierende();
-
+            DB DataBase = new DB();
+            connection = DataBase.SqlConnection();
         }
 
         private void btnBackToMainMenue_Click(object sender, EventArgs e)
