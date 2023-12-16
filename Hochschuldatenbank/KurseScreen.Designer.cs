@@ -32,13 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KurseScreen));
             GridViewKurs = new DataGridView();
             lblKursBezeichnung = new Label();
-            txtBoxKursBezeichnung = new TextBox();
+            txtBoxKursbezeichnung = new TextBox();
             lblKursSemester = new Label();
             comboBoxKursSemester = new ComboBox();
             lblKursHörsaal = new Label();
-            textBoxKursHörsaal = new TextBox();
+            txtBoxKursHoersaal = new TextBox();
             lblKursBeschreibung = new Label();
-            textBoxKursBeschreibung = new TextBox();
+            txtBoxKursbeschreibung = new TextBox();
             dtPickerKursStartdatum = new DateTimePicker();
             lblKursStartDatum = new Label();
             dtPickerKursEnddatum = new DateTimePicker();
@@ -82,6 +82,7 @@
             GridViewKurs.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             GridViewKurs.Size = new Size(1194, 382);
             GridViewKurs.TabIndex = 17;
+            GridViewKurs.CellContentClick += GridViewKurs_CellContentClick;
             // 
             // lblKursBezeichnung
             // 
@@ -95,15 +96,15 @@
             lblKursBezeichnung.TabIndex = 19;
             lblKursBezeichnung.Text = "Kursbezeichnung";
             // 
-            // txtBoxKursBezeichnung
+            // txtBoxKursbezeichnung
             // 
-            txtBoxKursBezeichnung.BackColor = Color.FromArgb(30, 30, 30);
-            txtBoxKursBezeichnung.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxKursBezeichnung.ForeColor = Color.White;
-            txtBoxKursBezeichnung.Location = new Point(277, 53);
-            txtBoxKursBezeichnung.Name = "txtBoxKursBezeichnung";
-            txtBoxKursBezeichnung.Size = new Size(256, 37);
-            txtBoxKursBezeichnung.TabIndex = 18;
+            txtBoxKursbezeichnung.BackColor = Color.FromArgb(30, 30, 30);
+            txtBoxKursbezeichnung.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBoxKursbezeichnung.ForeColor = Color.White;
+            txtBoxKursbezeichnung.Location = new Point(277, 53);
+            txtBoxKursbezeichnung.Name = "txtBoxKursbezeichnung";
+            txtBoxKursbezeichnung.Size = new Size(256, 37);
+            txtBoxKursbezeichnung.TabIndex = 18;
             // 
             // lblKursSemester
             // 
@@ -142,15 +143,15 @@
             lblKursHörsaal.TabIndex = 24;
             lblKursHörsaal.Text = "Hörsaal";
             // 
-            // textBoxKursHörsaal
+            // txtBoxKursHoersaal
             // 
-            textBoxKursHörsaal.BackColor = Color.FromArgb(30, 30, 30);
-            textBoxKursHörsaal.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxKursHörsaal.ForeColor = Color.White;
-            textBoxKursHörsaal.Location = new Point(277, 228);
-            textBoxKursHörsaal.Name = "textBoxKursHörsaal";
-            textBoxKursHörsaal.Size = new Size(256, 37);
-            textBoxKursHörsaal.TabIndex = 23;
+            txtBoxKursHoersaal.BackColor = Color.FromArgb(30, 30, 30);
+            txtBoxKursHoersaal.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBoxKursHoersaal.ForeColor = Color.White;
+            txtBoxKursHoersaal.Location = new Point(277, 228);
+            txtBoxKursHoersaal.Name = "txtBoxKursHoersaal";
+            txtBoxKursHoersaal.Size = new Size(256, 37);
+            txtBoxKursHoersaal.TabIndex = 23;
             // 
             // lblKursBeschreibung
             // 
@@ -164,15 +165,15 @@
             lblKursBeschreibung.TabIndex = 26;
             lblKursBeschreibung.Text = "Kursbeschreibung";
             // 
-            // textBoxKursBeschreibung
+            // txtBoxKursbeschreibung
             // 
-            textBoxKursBeschreibung.BackColor = Color.FromArgb(30, 30, 30);
-            textBoxKursBeschreibung.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxKursBeschreibung.ForeColor = Color.White;
-            textBoxKursBeschreibung.Location = new Point(277, 109);
-            textBoxKursBeschreibung.Name = "textBoxKursBeschreibung";
-            textBoxKursBeschreibung.Size = new Size(256, 37);
-            textBoxKursBeschreibung.TabIndex = 25;
+            txtBoxKursbeschreibung.BackColor = Color.FromArgb(30, 30, 30);
+            txtBoxKursbeschreibung.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBoxKursbeschreibung.ForeColor = Color.White;
+            txtBoxKursbeschreibung.Location = new Point(277, 109);
+            txtBoxKursbeschreibung.Name = "txtBoxKursbeschreibung";
+            txtBoxKursbeschreibung.Size = new Size(256, 37);
+            txtBoxKursbeschreibung.TabIndex = 25;
             // 
             // dtPickerKursStartdatum
             // 
@@ -257,6 +258,7 @@
             btnKursFelderLeeren.Text = "Felder leeren";
             btnKursFelderLeeren.TextImageRelation = TextImageRelation.ImageAboveText;
             btnKursFelderLeeren.UseVisualStyleBackColor = false;
+            btnKursFelderLeeren.Click += btnKursFelderLeeren_Click;
             // 
             // btnKursBearbeiten
             // 
@@ -272,6 +274,7 @@
             btnKursBearbeiten.TabIndex = 33;
             btnKursBearbeiten.Text = "Bearbeiten";
             btnKursBearbeiten.UseVisualStyleBackColor = false;
+            btnKursBearbeiten.Click += btnKursBearbeiten_Click;
             // 
             // btnKursLoeschen
             // 
@@ -288,6 +291,7 @@
             btnKursLoeschen.Text = "Löschen";
             btnKursLoeschen.TextImageRelation = TextImageRelation.ImageAboveText;
             btnKursLoeschen.UseVisualStyleBackColor = false;
+            btnKursLoeschen.Click += btnKursLoeschen_Click;
             // 
             // btnKursSpeichern
             // 
@@ -303,6 +307,7 @@
             btnKursSpeichern.TabIndex = 31;
             btnKursSpeichern.Text = "Speichern";
             btnKursSpeichern.UseVisualStyleBackColor = false;
+            btnKursSpeichern.Click += btnKursSpeichern_Click;
             // 
             // KurseScreen
             // 
@@ -322,13 +327,13 @@
             Controls.Add(dtPickerKursStartdatum);
             Controls.Add(lblKursStartDatum);
             Controls.Add(lblKursBeschreibung);
-            Controls.Add(textBoxKursBeschreibung);
+            Controls.Add(txtBoxKursbeschreibung);
             Controls.Add(lblKursHörsaal);
-            Controls.Add(textBoxKursHörsaal);
+            Controls.Add(txtBoxKursHoersaal);
             Controls.Add(comboBoxKursSemester);
             Controls.Add(lblKursSemester);
             Controls.Add(lblKursBezeichnung);
-            Controls.Add(txtBoxKursBezeichnung);
+            Controls.Add(txtBoxKursbezeichnung);
             Controls.Add(GridViewKurs);
             DoubleBuffered = true;
             ForeColor = Color.White;
@@ -347,13 +352,13 @@
 
         private DataGridView GridViewKurs;
         private Label lblKursBezeichnung;
-        private TextBox txtBoxKursBezeichnung;
+        private TextBox txtBoxKursbezeichnung;
         private Label lblKursSemester;
         private ComboBox comboBoxKursSemester;
         private Label lblKursHörsaal;
-        private TextBox textBoxKursHörsaal;
+        private TextBox txtBoxKursHoersaal;
         private Label lblKursBeschreibung;
-        private TextBox textBoxKursBeschreibung;
+        private TextBox txtBoxKursbeschreibung;
         private DateTimePicker dtPickerKursStartdatum;
         private Label lblKursStartDatum;
         private DateTimePicker dtPickerKursEnddatum;
