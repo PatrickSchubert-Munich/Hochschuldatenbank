@@ -148,9 +148,9 @@ namespace Hochschuldatenbank
 
                 string query = String.Format("UPDATE Studierende SET Vorname='{0}'," +
                                              "Nachname='{1}', Geschlecht='{2}', Geburtsdatum='{3}'," +
-                                             "Adresse='{4}', Studienfach='{5}';", studentVorname,
+                                             "Adresse='{4}', Studienfach='{5}' WHERE Matrikelnummer={6};", studentVorname,
                                              studentNachname, studentGeschlecht, studentGebDatum, studentAdresse,
-                                             studentAdresse, studentStudienfach, lastSelectedMatrNr);
+                                             studentStudienfach, lastSelectedMatrNr);
                 
                 DataBase.DataBaseExecuteQuery(query, connection);
             }
