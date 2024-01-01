@@ -162,7 +162,7 @@ namespace Hochschuldatenbank
                 string query = String.Format("UPDATE Dozenten SET Vorname='{0}'," +
                                              "Nachname='{1}', Geschlecht='{2}', Geburtsdatum='{3}'," +
                                              "Adresse='{4}', Abschluss='{5}', Fakultät='{6}'," +
-                                             "Dienstzimmer='{7}' WHERE KursID={8};", dozentVorname, 
+                                             "Dienstzimmer='{7}' WHERE Personalnummer={8};", dozentVorname, 
                                              dozentNachname, dozentGeschlecht, dozentGebDatum, dozentAdresse,
                                              dozentAbschluss, dozentFakultaet, dozentDienstzimmer, lastSelectedPersNr);
                 
