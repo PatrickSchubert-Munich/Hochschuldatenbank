@@ -42,10 +42,10 @@ namespace Hochschuldatenbank
 
         private void btnDozentSpeichern_Click(object sender, EventArgs e)
         {
-            if (txtBoxDozentVorname.Text == String.Empty ||
-                txtBoxDozentNachname.Text == String.Empty ||
-                txtBoxDozentAdresse.Text == String.Empty ||
-                comboBoxDozentFakultaet.Text == String.Empty)
+            if (txtBoxDozentVorname.Text == string.Empty ||
+                txtBoxDozentNachname.Text == string.Empty ||
+                txtBoxDozentAdresse.Text == string.Empty ||
+                comboBoxDozentFakultaet.Text == string.Empty)
             {
                 MessageBox.Show("Bitte Fülle weitere Felder aus. Bis auf den Abschluss und das Dienstzimmer " +
                     "sind alle anderen Felder sog. Pflichtfelder.");
@@ -70,7 +70,7 @@ namespace Hochschuldatenbank
             }
 
             connection.Open();
-            string query = String.Format("INSERT INTO Dozenten VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
+            string query = string.Format("INSERT INTO Dozenten VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
                                             dozentVorname, dozentNachname, dozentGeschlecht, dozentGebDatum,
                                             dozentAdresse, dozentAbschluss, dozentFakultaet, dozentDienstzimmer);
             SqlCommand cmd = new SqlCommand(query, connection);
@@ -83,12 +83,12 @@ namespace Hochschuldatenbank
 
         private void ClearAllFieldsDozenten()
         {
-            txtBoxDozentVorname.Text = String.Empty;
-            txtBoxDozentNachname.Text = String.Empty;
-            txtBoxDozentAdresse.Text = String.Empty;
-            txtBoxDozentDienstzimmer.Text = String.Empty;
-            comboBoxDozentAbschluss.Text = String.Empty;
-            comboBoxDozentFakultaet.Text = String.Empty;
+            txtBoxDozentVorname.Text = string.Empty;
+            txtBoxDozentNachname.Text = string.Empty;
+            txtBoxDozentAdresse.Text = string.Empty;
+            txtBoxDozentDienstzimmer.Text = string.Empty;
+            comboBoxDozentAbschluss.Text = string.Empty;
+            comboBoxDozentFakultaet.Text = string.Empty;
             radioBtnDozentMaennlich.Checked = true;
             radioBtnDozentWeiblich.Checked = false;
             dtPickerDozent.Value = DateTime.Today;
@@ -125,7 +125,7 @@ namespace Hochschuldatenbank
         {
             if (lastSelectedPersNr != 0)
             {
-                string query = String.Format("DELETE FROM Dozenten WHERE Personalnummer = {0};", lastSelectedPersNr);
+                string query = string.Format("DELETE FROM Dozenten WHERE Personalnummer = {0};", lastSelectedPersNr);
                 DataBase.DataBaseExecuteQuery(query, connection);
             }
             else
@@ -159,7 +159,7 @@ namespace Hochschuldatenbank
                     dozentGeschlecht = "w";
                 }
 
-                string query = String.Format("UPDATE Dozenten SET Vorname='{0}'," +
+                string query = string.Format("UPDATE Dozenten SET Vorname='{0}'," +
                                              "Nachname='{1}', Geschlecht='{2}', Geburtsdatum='{3}'," +
                                              "Adresse='{4}', Abschluss='{5}', Fakultät='{6}'," +
                                              "Dienstzimmer='{7}' WHERE Personalnummer={8};", dozentVorname, 

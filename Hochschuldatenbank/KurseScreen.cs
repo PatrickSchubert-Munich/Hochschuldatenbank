@@ -40,10 +40,10 @@ namespace Hochschuldatenbank
 
         private void ClearAllFieldsKurse()
         {
-            comboBoxKursbezeichnung.Text = String.Empty;
-            txtBoxKursbeschreibung.Text = String.Empty;
-            comboBoxKursSemester.Text = String.Empty;
-            txtBoxKursHoersaal.Text = String.Empty;
+            comboBoxKursbezeichnung.Text = string.Empty;
+            txtBoxKursbeschreibung.Text = string.Empty;
+            comboBoxKursSemester.Text = string.Empty;
+            txtBoxKursHoersaal.Text = string.Empty;
             dtPickerKursStartdatum.Value = DateTime.Today;
             dtPickerKursEnddatum.Value = DateTime.Today;
         }
@@ -62,7 +62,7 @@ namespace Hochschuldatenbank
             string kursStartDatum = dtPickerKursStartdatum.Value.Date.ToShortDateString();
             string kursEndDatum = dtPickerKursEnddatum.Value.Date.ToShortDateString();
 
-            if (kursBezeichnung == String.Empty ||
+            if (kursBezeichnung == string.Empty ||
                 kursSemester == null ||
                 kursStartDatum == null ||
                 kursEndDatum == null)
@@ -75,7 +75,7 @@ namespace Hochschuldatenbank
             string kursBeschreibung = txtBoxKursbeschreibung.Text;
             string kursHoersaal = txtBoxKursHoersaal.Text;
             
-            string query = String.Format("INSERT INTO Kurse VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');",
+            string query = string.Format("INSERT INTO Kurse VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');",
                                             kursBezeichnung, kursBeschreibung, kursSemester, kursHoersaal,
                                             kursStartDatum, kursEndDatum);
 
@@ -99,7 +99,7 @@ namespace Hochschuldatenbank
         {
             if (lastSelectedKursId != 0)
             {
-                string query = String.Format("DELETE FROM Kurse WHERE KursID = {0};", lastSelectedKursId);
+                string query = string.Format("DELETE FROM Kurse WHERE KursID = {0};", lastSelectedKursId);
                 DataBase.DataBaseExecuteQuery(query, connection);
             }
             else
@@ -123,7 +123,7 @@ namespace Hochschuldatenbank
                 var kursStartDatum = dtPickerKursStartdatum.Value.Date.ToShortDateString();
                 var kursEndDatum = dtPickerKursEnddatum.Value.Date.ToShortDateString();
 
-                string query = String.Format("UPDATE Kurse SET Kursbezeichnung='{0}'," +
+                string query = string.Format("UPDATE Kurse SET Kursbezeichnung='{0}'," +
                                              "Beschreibung='{1}', Semester='{2}', Hörsaal='{3}'," +
                                              "StartDatum='{4}', EndDatum='{5}' WHERE KursID={6};", 
                                              kursBezeichnung, kursBeschreibung, kursSemester, 

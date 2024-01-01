@@ -41,10 +41,10 @@ namespace Hochschuldatenbank
 
         private void ClearAllFieldsStudierende()
         {
-            txtBoxStudentVorname.Text = String.Empty;
-            txtBoxStudentNachname.Text = String.Empty;
-            txtBoxStudentAdresse.Text = String.Empty;
-            comboBoxStudentStudienfach.Text = String.Empty;
+            txtBoxStudentVorname.Text = string.Empty;
+            txtBoxStudentNachname.Text = string.Empty;
+            txtBoxStudentAdresse.Text = string.Empty;
+            comboBoxStudentStudienfach.Text = string.Empty;
             radioBtnStudentMaennlich.Checked = true;
             radioBtnStudentWeiblich.Checked = false;
             dtPickerStudent.Value = DateTime.Today;
@@ -60,10 +60,10 @@ namespace Hochschuldatenbank
 
         private void btnStudentSpeichern_Click(object sender, EventArgs e)
         {
-            if (txtBoxStudentVorname.Text == String.Empty ||
-                txtBoxStudentNachname.Text == String.Empty ||
-                txtBoxStudentAdresse.Text == String.Empty ||
-                comboBoxStudentStudienfach.Text == String.Empty)
+            if (txtBoxStudentVorname.Text == string.Empty ||
+                txtBoxStudentNachname.Text == string.Empty ||
+                txtBoxStudentAdresse.Text == string.Empty ||
+                comboBoxStudentStudienfach.Text == string.Empty)
             {
                 MessageBox.Show("Bitte alle Felder ausfüllen.");
                 return;
@@ -84,7 +84,7 @@ namespace Hochschuldatenbank
                 studentGeschlecht = "w";
             }
 
-            string query = String.Format("INSERT INTO Studierende VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');",
+            string query = string.Format("INSERT INTO Studierende VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');",
                                             studentVorname, studentNachname, studentGeschlecht, studentGebDatum,
                                             studentAdresse, studentStudienfach);
             
@@ -114,7 +114,7 @@ namespace Hochschuldatenbank
         {
             if (lastSelectedMatrNr != 0)
             {
-                string query = String.Format("DELETE FROM Studierende WHERE Matrikelnummer = {0};", lastSelectedMatrNr);
+                string query = string.Format("DELETE FROM Studierende WHERE Matrikelnummer = {0};", lastSelectedMatrNr);
                 DataBase.DataBaseExecuteQuery(query, connection);
             }
             else
@@ -146,7 +146,7 @@ namespace Hochschuldatenbank
                     studentGeschlecht = "w";
                 }
 
-                string query = String.Format("UPDATE Studierende SET Vorname='{0}'," +
+                string query = string.Format("UPDATE Studierende SET Vorname='{0}'," +
                                              "Nachname='{1}', Geschlecht='{2}', Geburtsdatum='{3}'," +
                                              "Adresse='{4}', Studienfach='{5}' WHERE Matrikelnummer={6};", studentVorname,
                                              studentNachname, studentGeschlecht, studentGebDatum, studentAdresse,
