@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KurseScreen));
             GridViewKurs = new DataGridView();
             lblKursBezeichnung = new Label();
-            txtBoxKursbezeichnung = new TextBox();
             lblKursSemester = new Label();
             comboBoxKursSemester = new ComboBox();
             lblKursHörsaal = new Label();
@@ -48,6 +47,7 @@
             btnKursBearbeiten = new Button();
             btnKursLoeschen = new Button();
             btnKursSpeichern = new Button();
+            comboBoxKursbezeichnung = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)GridViewKurs).BeginInit();
             SuspendLayout();
             // 
@@ -59,6 +59,7 @@
             GridViewKurs.AllowUserToResizeRows = false;
             GridViewKurs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GridViewKurs.BackgroundColor = Color.FromArgb(30, 30, 30);
+            GridViewKurs.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
@@ -68,6 +69,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             GridViewKurs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             GridViewKurs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridViewKurs.GridColor = Color.White;
             GridViewKurs.Location = new Point(36, 505);
             GridViewKurs.MultiSelect = false;
             GridViewKurs.Name = "GridViewKurs";
@@ -95,16 +97,6 @@
             lblKursBezeichnung.Size = new Size(191, 30);
             lblKursBezeichnung.TabIndex = 19;
             lblKursBezeichnung.Text = "Kursbezeichnung";
-            // 
-            // txtBoxKursbezeichnung
-            // 
-            txtBoxKursbezeichnung.BackColor = Color.FromArgb(30, 30, 30);
-            txtBoxKursbezeichnung.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxKursbezeichnung.ForeColor = Color.White;
-            txtBoxKursbezeichnung.Location = new Point(277, 53);
-            txtBoxKursbezeichnung.Name = "txtBoxKursbezeichnung";
-            txtBoxKursbezeichnung.Size = new Size(256, 37);
-            txtBoxKursbezeichnung.TabIndex = 18;
             // 
             // lblKursSemester
             // 
@@ -187,7 +179,7 @@
             dtPickerKursStartdatum.Name = "dtPickerKursStartdatum";
             dtPickerKursStartdatum.Size = new Size(256, 37);
             dtPickerKursStartdatum.TabIndex = 28;
-            dtPickerKursStartdatum.Value = new DateTime(2023, 12, 7, 17, 19, 58, 0);
+            dtPickerKursStartdatum.Value = new DateTime(2023, 10, 2, 0, 0, 0, 0);
             // 
             // lblKursStartDatum
             // 
@@ -213,7 +205,7 @@
             dtPickerKursEnddatum.Name = "dtPickerKursEnddatum";
             dtPickerKursEnddatum.Size = new Size(256, 37);
             dtPickerKursEnddatum.TabIndex = 30;
-            dtPickerKursEnddatum.Value = new DateTime(2023, 12, 7, 17, 19, 58, 0);
+            dtPickerKursEnddatum.Value = new DateTime(2024, 2, 29, 0, 0, 0, 0);
             // 
             // lblKursEndDatum
             // 
@@ -309,6 +301,19 @@
             btnKursSpeichern.UseVisualStyleBackColor = false;
             btnKursSpeichern.Click += btnKursSpeichern_Click;
             // 
+            // comboBoxKursbezeichnung
+            // 
+            comboBoxKursbezeichnung.BackColor = Color.FromArgb(30, 30, 30);
+            comboBoxKursbezeichnung.FlatStyle = FlatStyle.Flat;
+            comboBoxKursbezeichnung.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboBoxKursbezeichnung.ForeColor = Color.White;
+            comboBoxKursbezeichnung.FormattingEnabled = true;
+            comboBoxKursbezeichnung.Items.AddRange(new object[] { "Informatik I", "Informatik II", "Datenstrukturen & Algorithmen", "Objektorientiert Programmieren", "Grundlagen Wirtschaftsrecht", "Grundlagen Digitaltechnik", "Mikroprozessortechnik", "Embedded Systems", "Grundlagen Wirtschaftsinformatik", "Wirtschaftsinformatik I", "Wirtschaftsinformatik I", "Logik I", "Logik II", "Mathematik I", "Mthematik II", "Mathematik III", "Frotgeschrittene Methoden Programmieren", "Philosophie I", "Philosophie II", "Grundlagen Geisteswissenschaften", "Rethorik I", "Rethorik II", "Grundlagen Elektrotechnik", "Grundlagen Werkstoffkunde", "Elektrische Antriebe", "Motorentechnik", "Wirtschaftsenglisch", "Business Intelligence", "Data Scince", "Machine Learning" });
+            comboBoxKursbezeichnung.Location = new Point(277, 52);
+            comboBoxKursbezeichnung.Name = "comboBoxKursbezeichnung";
+            comboBoxKursbezeichnung.Size = new Size(256, 38);
+            comboBoxKursbezeichnung.TabIndex = 36;
+            // 
             // KurseScreen
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -317,6 +322,7 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1265, 923);
             ControlBox = false;
+            Controls.Add(comboBoxKursbezeichnung);
             Controls.Add(btnBackToMainMenue);
             Controls.Add(btnKursFelderLeeren);
             Controls.Add(btnKursBearbeiten);
@@ -333,7 +339,6 @@
             Controls.Add(comboBoxKursSemester);
             Controls.Add(lblKursSemester);
             Controls.Add(lblKursBezeichnung);
-            Controls.Add(txtBoxKursbezeichnung);
             Controls.Add(GridViewKurs);
             DoubleBuffered = true;
             ForeColor = Color.White;
@@ -352,7 +357,6 @@
 
         private DataGridView GridViewKurs;
         private Label lblKursBezeichnung;
-        private TextBox txtBoxKursbezeichnung;
         private Label lblKursSemester;
         private ComboBox comboBoxKursSemester;
         private Label lblKursHörsaal;
@@ -368,5 +372,6 @@
         private Button btnKursBearbeiten;
         private Button btnKursLoeschen;
         private Button btnKursSpeichern;
+        private ComboBox comboBoxKursbezeichnung;
     }
 }
