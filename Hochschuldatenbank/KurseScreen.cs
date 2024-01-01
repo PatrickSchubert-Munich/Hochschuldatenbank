@@ -40,7 +40,7 @@ namespace Hochschuldatenbank
 
         private void ClearAllFieldsKurse()
         {
-            txtBoxKursbezeichnung.Text = String.Empty;
+            comboBoxKursbezeichnung.Text = String.Empty;
             txtBoxKursbeschreibung.Text = String.Empty;
             comboBoxKursSemester.Text = String.Empty;
             txtBoxKursHoersaal.Text = String.Empty;
@@ -57,23 +57,24 @@ namespace Hochschuldatenbank
 
         private void btnKursSpeichern_Click(object sender, EventArgs e)
         {
-            if (txtBoxKursbezeichnung.Text == String.Empty ||
-                txtBoxKursbeschreibung.Text == String.Empty ||
-                comboBoxKursSemester.Text == String.Empty)
+            string kursBezeichnung = comboBoxKursbezeichnung.Text;
+            int? kursSemester = Convert.ToInt32(comboBoxKursSemester.Text);
+            string kursStartDatum = dtPickerKursStartdatum.Value.Date.ToShortDateString();
+            string kursEndDatum = dtPickerKursEnddatum.Value.Date.ToShortDateString();
+
+            if (kursBezeichnung == String.Empty ||
+                kursSemester == null ||
+                kursStartDatum == null ||
+                kursEndDatum == null)
             {
                 MessageBox.Show("Bitte weitere Felder ausfüllen. " +
                     "Ausschließlich Hörsaal und Beschreibung sind optional.");
                 return;
             }
 
-
-            string kursBezeichnung = txtBoxKursbezeichnung.Text;
             string kursBeschreibung = txtBoxKursbeschreibung.Text;
-            var kursSemester = Convert.ToInt32(comboBoxKursSemester.Text);
             string kursHoersaal = txtBoxKursHoersaal.Text;
-            var kursStartDatum = dtPickerKursStartdatum.Value.Date.ToShortDateString();
-            var kursEndDatum = dtPickerKursEnddatum.Value.Date.ToShortDateString();
-
+            
             string query = String.Format("INSERT INTO Kurse VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');",
                                             kursBezeichnung, kursBeschreibung, kursSemester, kursHoersaal,
                                             kursStartDatum, kursEndDatum);
@@ -86,7 +87,7 @@ namespace Hochschuldatenbank
         private void GridViewKurs_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             lastSelectedKursId = (int)GridViewKurs.SelectedRows[0].Cells[0].Value;
-            txtBoxKursbezeichnung.Text = GridViewKurs.SelectedRows[0].Cells[1].Value.ToString();
+            comboBoxKursbezeichnung.Text = GridViewKurs.SelectedRows[0].Cells[1].Value.ToString();
             txtBoxKursbeschreibung.Text = GridViewKurs.SelectedRows[0].Cells[2].Value.ToString();
             comboBoxKursSemester.Text = GridViewKurs.SelectedRows[0].Cells[3].Value.ToString();
             txtBoxKursHoersaal.Text = GridViewKurs.SelectedRows[0].Cells[4].Value.ToString();
@@ -115,18 +116,18 @@ namespace Hochschuldatenbank
         {
             if (lastSelectedKursId != 0)
             {
-                string kursBezeichnung = txtBoxKursbezeichnung.Text;
+                string kursBezeichnung = comboBoxKursbezeichnung.Text;
                 string kursBeschreibung = txtBoxKursbeschreibung.Text;
-                string kursSemester = comboBoxKursSemester.Text;
+                int? kursSemester = Convert.ToInt32(comboBoxKursSemester.Text);
                 string kursHoersaal = txtBoxKursHoersaal.Text;
                 var kursStartDatum = dtPickerKursStartdatum.Value.Date.ToShortDateString();
                 var kursEndDatum = dtPickerKursEnddatum.Value.Date.ToShortDateString();
 
                 string query = String.Format("UPDATE Kurse SET Kursbezeichnung='{0}'," +
                                              "Beschreibung='{1}', Semester='{2}', Hörsaal='{3}'," +
-                                             "StartDatum='{4}', EndDatum='{5}';", kursBezeichnung,
-                                             kursBeschreibung, kursSemester, kursHoersaal,
-                                             kursStartDatum, kursEndDatum);
+                                             "StartDatum='{4}', EndDatum='{5}' WHERE KursID={6};", 
+                                             kursBezeichnung, kursBeschreibung, kursSemester, 
+                                             kursHoersaal, kursStartDatum, kursEndDatum, lastSelectedKursId);
 
                 DataBase.DataBaseExecuteQuery(query, connection);
             }
