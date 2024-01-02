@@ -15,7 +15,6 @@ namespace Hochschuldatenbank
     {
         private DB DataBase { get; }
         private SqlConnection connection { get; }
-        string studentGeschlecht = "";
         int lastSelectedKursId = 0;
 
         public KurseScreen()
@@ -28,7 +27,7 @@ namespace Hochschuldatenbank
 
         private void btnBackToMainMenue_Click(object sender, EventArgs e)
         {
-            MainMenueScreen mainMenueScreen = new MainMenueScreen();
+            Hochschulverwaltung mainMenueScreen = new Hochschulverwaltung();
             mainMenueScreen.Show();
             this.Hide();
         }

@@ -12,7 +12,7 @@ namespace Hochschuldatenbank
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new LoadingScreen());
-            Application.Run(new MainMenueScreen());
+            Application.Run(new Hochschulverwaltung());
         }
     }
 }

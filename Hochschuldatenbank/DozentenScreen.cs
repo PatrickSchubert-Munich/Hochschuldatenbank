@@ -30,7 +30,7 @@ namespace Hochschuldatenbank
 
         private void btnBackToMainMenue_Click(object sender, EventArgs e)
         {
-            MainMenueScreen mainMenueScreen = new MainMenueScreen();
+            Hochschulverwaltung mainMenueScreen = new Hochschulverwaltung();
             mainMenueScreen.Show();
             this.Hide();
         }
@@ -69,14 +69,12 @@ namespace Hochschuldatenbank
                 dozentGeschlecht = "w";
             }
 
-            connection.Open();
+            // SQL-Query: befülle Tabelle Dozenten
             string query = string.Format("INSERT INTO Dozenten VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
                                             dozentVorname, dozentNachname, dozentGeschlecht, dozentGebDatum,
                                             dozentAdresse, dozentAbschluss, dozentFakultaet, dozentDienstzimmer);
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
-            connection.Close();
-
+            
+            DataBase.DataBaseExecuteQuery(query, connection);
             ClearAllFieldsDozenten();
             ShowDozenten();
         }

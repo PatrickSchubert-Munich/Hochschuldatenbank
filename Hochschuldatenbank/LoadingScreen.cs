@@ -30,7 +30,7 @@ namespace Hochschuldatenbank
                 this.Hide();
 
                 // Loading MainMenueScreen
-                MainMenueScreen mainManueScreen = new MainMenueScreen();
+                Hochschulverwaltung mainManueScreen = new Hochschulverwaltung();
                 mainManueScreen.Show();
             }
             
