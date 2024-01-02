@@ -189,13 +189,18 @@ namespace Hochschuldatenbank
             int persNr = int.Parse(comboBoxVerwaltungPersNr.Text);
             string query = string.Format("UPDATE KursTeilnahmen SET KursID='{0}'," +
                                          "Matrikelnummer='{1}', Semester='{2}'," +
-                                         "Personalnummer='{3}' WHERE KursID = {4}" + 
-                                         "AND Matrikelnummer = {5};", 
-                                         kursId, matrNr, semester, persNr, 
+                                         "Personalnummer='{3}' WHERE KursID = {4}" +
+                                         "AND Matrikelnummer = {5};",
+                                         kursId, matrNr, semester, persNr,
                                          lastSelectedKursID, lastSelectedMatrNr);
 
             DataBase.DataBaseExecuteQuery(query, connection);
             ShowVerwaltung();
+        }
+
+        private void Hochschulverwaltung_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
