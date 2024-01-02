@@ -31,7 +31,7 @@ namespace Hochschuldatenbank
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hochschulverwaltung));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btnStudentenMainMenue = new Button();
             btnDozentenMainMenue = new Button();
             btnKurseMainMenue = new Button();
@@ -129,14 +129,14 @@ namespace Hochschuldatenbank
             GridViewVerwaltung.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GridViewVerwaltung.BackgroundColor = Color.FromArgb(30, 30, 30);
             GridViewVerwaltung.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            GridViewVerwaltung.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            GridViewVerwaltung.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             GridViewVerwaltung.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GridViewVerwaltung.GridColor = Color.White;
             GridViewVerwaltung.Location = new Point(44, 692);
@@ -349,7 +349,7 @@ namespace Hochschuldatenbank
             MinimizeBox = false;
             Name = "Hochschulverwaltung";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Hochschulverwaltung";
+            Text = "Hochschulverwaltung (Hauptmenü)";
             Load += Hochschulverwaltung_Load;
             ((System.ComponentModel.ISupportInitialize)GridViewVerwaltung).EndInit();
             ResumeLayout(false);
