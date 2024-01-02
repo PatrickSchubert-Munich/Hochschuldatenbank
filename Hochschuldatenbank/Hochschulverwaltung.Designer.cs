@@ -350,7 +350,6 @@ namespace Hochschuldatenbank
             Name = "Hochschulverwaltung";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Hochschulverwaltung (Hauptmenü)";
-            Load += Hochschulverwaltung_Load;
             ((System.ComponentModel.ISupportInitialize)GridViewVerwaltung).EndInit();
             ResumeLayout(false);
             PerformLayout();
