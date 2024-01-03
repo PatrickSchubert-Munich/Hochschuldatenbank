@@ -8,4 +8,4 @@ ein ERM-Datenmodell erstellt, sodass die erste, zweite und dritte Normalform ein
 sich bemerkbar, wenn Daten auf der Hauptseite eingetragen werden sollen. Nur konsistente Daten sind zulässig. Vorteil an dieser Herangehensweise,
 dass die Programmierarbeit erleichtert wird. Der Einfachheit wird die Datenbank als .mdf - Datei lokal gespeichert. 
 
-Der Code wurde mit Visual Studio 2022 und dem .Net Framework v8.0 entwickelt. Für die UI wurde Windows Forms verwendet.
+Der Code wurde mit Visual Studio 2022 und dem .Net Framework Runtime v8.0 entwickelt. Für die UI wurde Windows Forms verwendet.
