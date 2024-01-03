@@ -43,12 +43,14 @@ namespace Hochschuldatenbank
             lblVerwaltungPersonalnummer = new Label();
             lblVerwaltungSemester = new Label();
             lblVerwaltungMatrikelnummer = new Label();
-            lblVerwaltungKursID = new Label();
+            lblVerwaltungKursBez = new Label();
             comboBoxVerwaltungPersNr = new ComboBox();
-            comboBoxVerwaltungKursID = new ComboBox();
+            comboBoxVerwaltungKursBez = new ComboBox();
             comboBoxVerwaltungMatrNr = new ComboBox();
             comboBoxVerwaltungSemester = new ComboBox();
             labelVerwaltungZuordnungKurse = new Label();
+            txtLabelVerwaltungKursID = new Label();
+            txtBoxVerwaltungKursID = new TextBox();
             ((System.ComponentModel.ISupportInitialize)GridViewVerwaltung).BeginInit();
             SuspendLayout();
             // 
@@ -139,7 +141,7 @@ namespace Hochschuldatenbank
             GridViewVerwaltung.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             GridViewVerwaltung.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GridViewVerwaltung.GridColor = Color.White;
-            GridViewVerwaltung.Location = new Point(44, 692);
+            GridViewVerwaltung.Location = new Point(44, 747);
             GridViewVerwaltung.MultiSelect = false;
             GridViewVerwaltung.Name = "GridViewVerwaltung";
             GridViewVerwaltung.ReadOnly = true;
@@ -164,7 +166,7 @@ namespace Hochschuldatenbank
             btnVerwaltungBearbeiten.FlatStyle = FlatStyle.Flat;
             btnVerwaltungBearbeiten.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVerwaltungBearbeiten.ForeColor = Color.White;
-            btnVerwaltungBearbeiten.Location = new Point(439, 614);
+            btnVerwaltungBearbeiten.Location = new Point(461, 669);
             btnVerwaltungBearbeiten.Name = "btnVerwaltungBearbeiten";
             btnVerwaltungBearbeiten.Size = new Size(162, 42);
             btnVerwaltungBearbeiten.TabIndex = 46;
@@ -180,7 +182,7 @@ namespace Hochschuldatenbank
             btnVerwaltungLoeschen.FlatStyle = FlatStyle.Flat;
             btnVerwaltungLoeschen.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVerwaltungLoeschen.ForeColor = Color.White;
-            btnVerwaltungLoeschen.Location = new Point(646, 614);
+            btnVerwaltungLoeschen.Location = new Point(668, 669);
             btnVerwaltungLoeschen.Name = "btnVerwaltungLoeschen";
             btnVerwaltungLoeschen.Size = new Size(162, 42);
             btnVerwaltungLoeschen.TabIndex = 45;
@@ -197,7 +199,7 @@ namespace Hochschuldatenbank
             btnVerwaltungSpeichern.FlatStyle = FlatStyle.Flat;
             btnVerwaltungSpeichern.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVerwaltungSpeichern.ForeColor = Color.White;
-            btnVerwaltungSpeichern.Location = new Point(233, 614);
+            btnVerwaltungSpeichern.Location = new Point(258, 669);
             btnVerwaltungSpeichern.Name = "btnVerwaltungSpeichern";
             btnVerwaltungSpeichern.Size = new Size(162, 42);
             btnVerwaltungSpeichern.TabIndex = 44;
@@ -211,7 +213,7 @@ namespace Hochschuldatenbank
             lblVerwaltungPersonalnummer.BackColor = Color.Transparent;
             lblVerwaltungPersonalnummer.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblVerwaltungPersonalnummer.ForeColor = Color.White;
-            lblVerwaltungPersonalnummer.Location = new Point(44, 551);
+            lblVerwaltungPersonalnummer.Location = new Point(44, 609);
             lblVerwaltungPersonalnummer.Name = "lblVerwaltungPersonalnummer";
             lblVerwaltungPersonalnummer.Size = new Size(98, 30);
             lblVerwaltungPersonalnummer.TabIndex = 51;
@@ -223,7 +225,7 @@ namespace Hochschuldatenbank
             lblVerwaltungSemester.BackColor = Color.Transparent;
             lblVerwaltungSemester.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblVerwaltungSemester.ForeColor = Color.White;
-            lblVerwaltungSemester.Location = new Point(44, 499);
+            lblVerwaltungSemester.Location = new Point(44, 557);
             lblVerwaltungSemester.Name = "lblVerwaltungSemester";
             lblVerwaltungSemester.Size = new Size(109, 30);
             lblVerwaltungSemester.TabIndex = 50;
@@ -235,23 +237,23 @@ namespace Hochschuldatenbank
             lblVerwaltungMatrikelnummer.BackColor = Color.Transparent;
             lblVerwaltungMatrikelnummer.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblVerwaltungMatrikelnummer.ForeColor = Color.White;
-            lblVerwaltungMatrikelnummer.Location = new Point(44, 446);
+            lblVerwaltungMatrikelnummer.Location = new Point(44, 504);
             lblVerwaltungMatrikelnummer.Name = "lblVerwaltungMatrikelnummer";
             lblVerwaltungMatrikelnummer.Size = new Size(145, 30);
             lblVerwaltungMatrikelnummer.TabIndex = 49;
             lblVerwaltungMatrikelnummer.Text = "Matrikel.-Nr.";
             // 
-            // lblVerwaltungKursID
+            // lblVerwaltungKursBez
             // 
-            lblVerwaltungKursID.AutoSize = true;
-            lblVerwaltungKursID.BackColor = Color.Transparent;
-            lblVerwaltungKursID.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblVerwaltungKursID.ForeColor = Color.White;
-            lblVerwaltungKursID.Location = new Point(44, 394);
-            lblVerwaltungKursID.Name = "lblVerwaltungKursID";
-            lblVerwaltungKursID.Size = new Size(91, 30);
-            lblVerwaltungKursID.TabIndex = 48;
-            lblVerwaltungKursID.Text = "Kurs-ID";
+            lblVerwaltungKursBez.AutoSize = true;
+            lblVerwaltungKursBez.BackColor = Color.Transparent;
+            lblVerwaltungKursBez.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblVerwaltungKursBez.ForeColor = Color.White;
+            lblVerwaltungKursBez.Location = new Point(44, 394);
+            lblVerwaltungKursBez.Name = "lblVerwaltungKursBez";
+            lblVerwaltungKursBez.Size = new Size(191, 30);
+            lblVerwaltungKursBez.TabIndex = 48;
+            lblVerwaltungKursBez.Text = "Kursbezeichnung";
             // 
             // comboBoxVerwaltungPersNr
             // 
@@ -261,23 +263,24 @@ namespace Hochschuldatenbank
             comboBoxVerwaltungPersNr.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxVerwaltungPersNr.ForeColor = Color.White;
             comboBoxVerwaltungPersNr.FormattingEnabled = true;
-            comboBoxVerwaltungPersNr.Location = new Point(234, 543);
+            comboBoxVerwaltungPersNr.Location = new Point(258, 601);
             comboBoxVerwaltungPersNr.Name = "comboBoxVerwaltungPersNr";
             comboBoxVerwaltungPersNr.Size = new Size(256, 38);
             comboBoxVerwaltungPersNr.TabIndex = 52;
             // 
-            // comboBoxVerwaltungKursID
+            // comboBoxVerwaltungKursBez
             // 
-            comboBoxVerwaltungKursID.BackColor = Color.FromArgb(30, 30, 30);
-            comboBoxVerwaltungKursID.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxVerwaltungKursID.FlatStyle = FlatStyle.Flat;
-            comboBoxVerwaltungKursID.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBoxVerwaltungKursID.ForeColor = Color.White;
-            comboBoxVerwaltungKursID.FormattingEnabled = true;
-            comboBoxVerwaltungKursID.Location = new Point(234, 386);
-            comboBoxVerwaltungKursID.Name = "comboBoxVerwaltungKursID";
-            comboBoxVerwaltungKursID.Size = new Size(256, 38);
-            comboBoxVerwaltungKursID.TabIndex = 53;
+            comboBoxVerwaltungKursBez.BackColor = Color.FromArgb(30, 30, 30);
+            comboBoxVerwaltungKursBez.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxVerwaltungKursBez.FlatStyle = FlatStyle.Flat;
+            comboBoxVerwaltungKursBez.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboBoxVerwaltungKursBez.ForeColor = Color.White;
+            comboBoxVerwaltungKursBez.FormattingEnabled = true;
+            comboBoxVerwaltungKursBez.Location = new Point(258, 386);
+            comboBoxVerwaltungKursBez.Name = "comboBoxVerwaltungKursBez";
+            comboBoxVerwaltungKursBez.Size = new Size(256, 38);
+            comboBoxVerwaltungKursBez.TabIndex = 53;
+            comboBoxVerwaltungKursBez.SelectedIndexChanged += comboBoxVerwaltungKursBez_SelectedIndexChanged;
             // 
             // comboBoxVerwaltungMatrNr
             // 
@@ -287,7 +290,7 @@ namespace Hochschuldatenbank
             comboBoxVerwaltungMatrNr.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxVerwaltungMatrNr.ForeColor = Color.White;
             comboBoxVerwaltungMatrNr.FormattingEnabled = true;
-            comboBoxVerwaltungMatrNr.Location = new Point(234, 438);
+            comboBoxVerwaltungMatrNr.Location = new Point(258, 496);
             comboBoxVerwaltungMatrNr.Name = "comboBoxVerwaltungMatrNr";
             comboBoxVerwaltungMatrNr.Size = new Size(256, 38);
             comboBoxVerwaltungMatrNr.TabIndex = 54;
@@ -300,7 +303,7 @@ namespace Hochschuldatenbank
             comboBoxVerwaltungSemester.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxVerwaltungSemester.ForeColor = Color.White;
             comboBoxVerwaltungSemester.FormattingEnabled = true;
-            comboBoxVerwaltungSemester.Location = new Point(234, 491);
+            comboBoxVerwaltungSemester.Location = new Point(258, 549);
             comboBoxVerwaltungSemester.Name = "comboBoxVerwaltungSemester";
             comboBoxVerwaltungSemester.Size = new Size(256, 38);
             comboBoxVerwaltungSemester.TabIndex = 55;
@@ -318,22 +321,47 @@ namespace Hochschuldatenbank
             labelVerwaltungZuordnungKurse.TabIndex = 56;
             labelVerwaltungZuordnungKurse.Text = "Zuordnung von Studenten und Dozenten zu Kursen:";
             // 
+            // txtLabelVerwaltungKursID
+            // 
+            txtLabelVerwaltungKursID.AutoSize = true;
+            txtLabelVerwaltungKursID.BackColor = Color.Transparent;
+            txtLabelVerwaltungKursID.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtLabelVerwaltungKursID.ForeColor = Color.White;
+            txtLabelVerwaltungKursID.Location = new Point(44, 443);
+            txtLabelVerwaltungKursID.Name = "txtLabelVerwaltungKursID";
+            txtLabelVerwaltungKursID.Size = new Size(82, 30);
+            txtLabelVerwaltungKursID.TabIndex = 57;
+            txtLabelVerwaltungKursID.Text = "KursID";
+            // 
+            // txtBoxVerwaltungKursID
+            // 
+            txtBoxVerwaltungKursID.BackColor = Color.FromArgb(30, 30, 30);
+            txtBoxVerwaltungKursID.Enabled = false;
+            txtBoxVerwaltungKursID.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBoxVerwaltungKursID.ForeColor = Color.White;
+            txtBoxVerwaltungKursID.Location = new Point(258, 443);
+            txtBoxVerwaltungKursID.Name = "txtBoxVerwaltungKursID";
+            txtBoxVerwaltungKursID.Size = new Size(256, 37);
+            txtBoxVerwaltungKursID.TabIndex = 58;
+            // 
             // Hochschulverwaltung
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(40, 40, 40);
-            ClientSize = new Size(1259, 1116);
+            ClientSize = new Size(1259, 1171);
             ControlBox = false;
+            Controls.Add(txtBoxVerwaltungKursID);
+            Controls.Add(txtLabelVerwaltungKursID);
             Controls.Add(labelVerwaltungZuordnungKurse);
             Controls.Add(comboBoxVerwaltungSemester);
             Controls.Add(comboBoxVerwaltungMatrNr);
-            Controls.Add(comboBoxVerwaltungKursID);
+            Controls.Add(comboBoxVerwaltungKursBez);
             Controls.Add(comboBoxVerwaltungPersNr);
             Controls.Add(lblVerwaltungPersonalnummer);
             Controls.Add(lblVerwaltungSemester);
             Controls.Add(lblVerwaltungMatrikelnummer);
-            Controls.Add(lblVerwaltungKursID);
+            Controls.Add(lblVerwaltungKursBez);
             Controls.Add(btnVerwaltungBearbeiten);
             Controls.Add(btnVerwaltungLoeschen);
             Controls.Add(btnVerwaltungSpeichern);
@@ -368,11 +396,13 @@ namespace Hochschuldatenbank
         private Label lblVerwaltungPersonalnummer;
         private Label lblVerwaltungSemester;
         private Label lblVerwaltungMatrikelnummer;
-        private Label lblVerwaltungKursID;
+        private Label lblVerwaltungKursBez;
         private ComboBox comboBoxVerwaltungPersNr;
-        private ComboBox comboBoxVerwaltungKursID;
+        private ComboBox comboBoxVerwaltungKursBez;
         private ComboBox comboBoxVerwaltungMatrNr;
         private ComboBox comboBoxVerwaltungSemester;
         private Label labelVerwaltungZuordnungKurse;
+        private Label txtLabelVerwaltungKursID;
+        private TextBox txtBoxVerwaltungKursID;
     }
 }

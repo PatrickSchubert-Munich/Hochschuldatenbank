@@ -308,7 +308,7 @@
             comboBoxKursbezeichnung.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxKursbezeichnung.ForeColor = Color.White;
             comboBoxKursbezeichnung.FormattingEnabled = true;
-            comboBoxKursbezeichnung.Items.AddRange(new object[] { "Informatik I", "Informatik II", "Datenstrukturen & Algorithmen", "Objektorientiert Programmieren", "Grundlagen Wirtschaftsrecht", "Grundlagen Digitaltechnik", "Mikroprozessortechnik", "Embedded Systems", "Grundlagen Wirtschaftsinformatik", "Wirtschaftsinformatik I", "Wirtschaftsinformatik I", "Logik I", "Logik II", "Mathematik I", "Mthematik II", "Mathematik III", "Frotgeschrittene Methoden Programmieren", "Philosophie I", "Philosophie II", "Grundlagen Geisteswissenschaften", "Rethorik I", "Rethorik II", "Grundlagen Elektrotechnik", "Grundlagen Werkstoffkunde", "Elektrische Antriebe", "Motorentechnik", "Wirtschaftsenglisch", "Business Intelligence", "Data Scince", "Machine Learning" });
+            comboBoxKursbezeichnung.Items.AddRange(new object[] { "Informatik I", "Informatik II", "Datenstrukturen & Algorithmen", "Objektorientiert Programmieren", "Grundlagen Digitaltechnik", "Mikroprozessortechnik", "Embedded Systems", "Wirtschaftsinformatik I", "Wirtschaftsinformatik II", "Logik I", "Logik II", "Mathematik I", "Mthematik II", "Frotgeschrittene Methoden Programmieren", "Rethorik I", "Rethorik II", "Grundlagen Elektrotechnik", "Grundlagen Werkstoffkunde", "Wirtschaftsenglisch", "Business Intelligence", "Data Scince", "Machine Learning" });
             comboBoxKursbezeichnung.Location = new Point(277, 52);
             comboBoxKursbezeichnung.Name = "comboBoxKursbezeichnung";
             comboBoxKursbezeichnung.Size = new Size(256, 38);
